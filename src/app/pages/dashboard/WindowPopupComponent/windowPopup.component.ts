@@ -1,5 +1,3 @@
-
-
 import { Component, ElementRef, PipeTransform, TemplateRef, ViewChild, Renderer2,Injectable, OnInit  } from '@angular/core';
 import { NbWindowConfig, NbWindowService, NbWindowRef,NbToastrService } from '@nebular/theme';
 import {ApiGetService} from './apiGet.services';
@@ -640,7 +638,6 @@ clickHandler(args: ClickEventArgs): void {
       this.orderForm.setValue({
         Alias: ALIAS.Alias ? ALIAS.Alias : '',
       });
-    
     }
 
   source: LocalDataSource = new LocalDataSource();
@@ -670,7 +667,7 @@ clickHandler(args: ClickEventArgs): void {
     // 'AND' by default, so changing to 'OR' by setting false here
   }
 
-  
+   
   actionBegins(args) {
     if (args.requestType === 'beginEdit') {
       this.submitClicked = true;

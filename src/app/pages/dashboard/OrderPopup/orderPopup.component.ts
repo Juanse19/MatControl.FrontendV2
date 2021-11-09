@@ -84,6 +84,7 @@ let win:NbWindowRef;
   styleUrls: ['orderPopup.component.scss'],
 })
 export class WindowComponent2  implements OnInit {
+  
   arrumeManualForm: FormGroup;
 
   mostrar = false
@@ -145,7 +146,7 @@ export class WindowComponent2  implements OnInit {
         this.mostrar = false;
         this.ocultar = false;
        } else {
-         debugger
+        //    
 
         this.mostrar = true;
        
@@ -163,7 +164,7 @@ export class WindowComponent2  implements OnInit {
       }
       
     }
-
+ 
     initForm() {
       this.arrumeManualForm = this.fb.group({
         id: this.fb.control(-1),
@@ -182,11 +183,11 @@ export class WindowComponent2  implements OnInit {
     or=ORDESTA
 
   openWindowForm(nombreWindow: string, orden:Ordenes, idMaquina:number) {
-    debugger
+    // debugger
     if(orden.id){
       ORDEN = orden;
       this.data = orden;
-      console.log('data orden', this.data);
+      // console.log('data orden', this.data);
       
     }else{
       ORDEN ={
@@ -202,6 +203,7 @@ export class WindowComponent2  implements OnInit {
       };
 
     }
+   
    
     //   const myOrden = this.data.order.split('-', 1);
 
@@ -308,7 +310,7 @@ export class WindowComponent2  implements OnInit {
  
     if (STATUSPACKAGE.idStatus === 1 || STATUSPACKAGE.idStatus === 2 || STATUSPACKAGE.idStatus === 3){
       // this.ChangeState();
-      console.log('Data OrderManual', STATUSPACKAGE);
+      // console.log('Data OrderManual', STATUSPACKAGE);
       
       this.apiGetComp.PostJson(this.api.apiUrlMatbox + '/Orders/postusppackagemanualcontrol',STATUSPACKAGE).subscribe((res: any) => {
             
@@ -436,8 +438,8 @@ openWindow(contentTemplate, titleValue: string, textValue: string, numberValue: 
     console.log(orden + ', ' + nombre);
   }
 
-  ngOnDestroy() {
-   
-    }
+  ngOnDestroy(): void {
+    this.alive = false;
+  }
 
 }

@@ -24,6 +24,14 @@ interface confi {
   UpdateDate: string,
  }
 
+ interface parame {
+    Id: number,
+    Module: string,
+    Parameter: string,
+    Value: string,
+    Observation: string
+ }
+
  interface conC {
   Id: number,
   Parameter: string,
@@ -59,6 +67,7 @@ export class ParameterizationComponent implements OnInit {
 
   public dataConf: confi;
   public dataConfigu: confi[] = [];
+  public dataPara: parame[];
 
   get Parameter() { return this.orderForm.get('Parameter')}
   get Value() { return this.orderForm.get('Value')}
@@ -89,7 +98,8 @@ export class ParameterizationComponent implements OnInit {
         type: 'Menu',
      };
 
-     this.ChargeDataConfi();
+    //  this.ChargeDataConfi();
+     this.ChargeDataPara();
 
      this.commands = [
       { type: 'Edit', buttonOption: { cssClass: 'e-flat', iconCss: 'e-edit e-icons' } },
@@ -258,6 +268,21 @@ debugger
      });
      
   } 
+
+  // ngDoCheck(){
+  //   console.log('Deteccion de cambios');
+  //   console.log('- - - - - - - - - - - ');
+    
+  // }
+
+  ChargeDataPara() {
+    this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/Configurations').subscribe((res: any) => {
+      //REPORTOCUPATION=res;
+      // console.log("Configuration:", res);
+      this.dataPara = res;
+      console.log("Configuration:", this.dataPara);
+    });
+  }
 
   ChargeDataConfi() {
     this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/configuration').subscribe((res: any) => {

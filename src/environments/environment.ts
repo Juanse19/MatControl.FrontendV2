@@ -14,10 +14,10 @@ export const environment = {
   // apiUrlMat: 'http://10.100.22.100:5001/api',
   // apiUrlMatSignalR: '10.100.22.100:5001',
   // apiUrlNode: 'http://10.100.22.100:1880',
-  apiUrl: 'http://172.27.45.12:3001/api',
+  apiUrl: 'http://10.100.22.89:3003/api',
   apiUrlMat: 'http://172.27.45.12:5001/api',
   apiUrlMatSignalR: 'http://172.27.45.12:5001',
-  apiUrlNode: 'http://172.27.45.12:1880',
+  apiUrlNode: 'http://10.100.22.89:1882',
   testUser: {
     // tslint:disable
     token: {

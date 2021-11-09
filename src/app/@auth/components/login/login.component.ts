@@ -174,19 +174,19 @@ export class NgxLoginComponent implements OnInit {
             });
         } else if (this.validData[0].Licens_id === "2") {
           // debugger
-          console.log("licencia de usuario inactiva");
+          // console.log("licencia de usuario inactiva");
           this.toasterService.danger(
             "",
             `¡Licencia Inactiva, por favor comuniquese con el administrador!`
           );
         } else if (this.validData[0].Licens_id === null) {
-          console.log("No tiene tiene licencia ");
+          // console.log("No tiene tiene licencia ");
           this.toasterService.danger("", `¡No tiene tiene licencia!`);
         } else if (
           this.validData[0].States === 2 ||
           this.validData[0].States === null
         ) {
-          console.log("Usuario Inactivo");
+          // console.log("Usuario Inactivo");
           this.toasterService.danger("", `¡Usuario Inactivo!`);
         } else {
           
@@ -214,7 +214,7 @@ export class NgxLoginComponent implements OnInit {
                 .PostJson(this.api.apiUrlNode + "/updateSesion", respon)
                 .pipe(takeWhile(() => this.alive))
                 .subscribe((res: any) => {
-                  console.log("Se actualizó: ", res);
+                  // console.log("Se actualizó: ", res);
                 });
               // Swal.fire(
               //   '¡Sesión cerrada',

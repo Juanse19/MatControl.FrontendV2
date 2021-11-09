@@ -9,18 +9,17 @@
         <!-- <ng2-smart-table class="example-smart-table" [settings]="settings" [source]="ReportOrdens">
         </ng2-smart-table> (actionBegin)="actionComplete($event)" -->
 
-        <ejs-grid [dataSource]='dataConfigu' [editSettings]='editSettings' [toolbar]='toolbar'
+        <ejs-grid [dataSource]='dataPara' [editSettings]='editSettings' [toolbar]='toolbar'
          (actionBegin)='actionBegin($event)'  [allowPaging]="true"
         [pageSettings]="pageSettings" allowSorting='true' [filterSettings]="filterOptions" allowTextWrap="true"
         [allowFiltering]="true">
             <e-columns>
                 <e-column headerText='Editar' width='30' textAlign='Left' [commands]='commands'></e-column>
-                <e-column field='Id' headerText='Id' [isPrimaryKey]='true' width=30></e-column>
-                <e-column field='Parameter' headerText='Parameter' textAlign='Left' width=80></e-column>
-                <e-column field='Value' headerText='Value' textAlign='Left' width=80></e-column>
-                <e-column field='CreateDate' headerText='Fecha ini' type="date" format="dd/MM/yyyy hh:mm:ss a" width=40></e-column>
-                <e-column field='UpdateDate' headerText='Fecha fin' type="date" format="dd/MM/yyyy hh:mm:ss a" width=80></e-column>
-                
+                <!-- <e-column field='Id' headerText='Id' [isPrimaryKey]='true' width=30></e-column> -->
+                <e-column field='Module' headerText='Modúlo' textAlign='Left' width=80></e-column>
+                <e-column field='Parameter' headerText='Parametro' textAlign='Left' width=80></e-column>
+                <e-column field='Value' headerText='Valor' textAlign='Left' width=80></e-column>
+                <e-column field='Observation' headerText='Observación' textAlign='Left' width=80></e-column> 
             </e-columns>
 
             <!-- <ng-template #editSettingsTemplate let-data>
@@ -170,7 +169,7 @@
 
 
     </nb-card-body>
-    <nb-card-footer>
+    <!-- <nb-card-footer>
         <button nbButton status="warning" (click)="reconocer()" hero>Limpiar WCS</button>
-    </nb-card-footer>
+    </nb-card-footer> -->
 </nb-card>

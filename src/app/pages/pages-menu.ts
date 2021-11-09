@@ -306,6 +306,31 @@ export class PagesMenu {
       ],
     };
 
+    const InductionMenu: NbMenuItem = {
+      title: 'Modúlo de inducción',
+      icon: 'bar-chart-outline',
+      // link: '/pages/analytics/analytics',
+      children: [
+        {
+          title: 'Ocupación',
+          link: '/pages/analytics/ocupacion',
+        },
+        {
+          title: 'Ordenes',
+          link: '/pages/analytics/ordenes',
+        },
+        {
+          title: 'Ordenes no transportables',
+          link: '/pages/analytics/ordenesNotWips',
+        },
+        {
+          title: 'Predictivo',
+          link: '/pages/analytics/predictivo',
+        },
+        
+      ],
+    };
+
     const induccionMenu: NbMenuItem = {
       title: 'Inducción',
       icon: 'archive-outline',
@@ -407,7 +432,8 @@ export class PagesMenu {
         if (hasAccess) {
           // return [...dashboardMenu, orderMenu, userMenu, ...menu,registerMenu];
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
-          return [...dashboardMenu, procesosMenu, induccionMenu, repoMenu, analyticsMenu, configurationMenu, alarmMenu];
+          // return [...dashboardMenu, procesosMenu, induccionMenu, repoMenu, analyticsMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, procesosMenu, InductionMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];
