@@ -45,6 +45,11 @@ const routes: Routes = [{
         .then(m => m.AnalyticsModule),
     },
     {
+      path: 'induction',
+      loadChildren: () => import('./induction/induction.module')
+        .then(m => m.InductionModule),
+    },
+    {
       path: 'sic-syncro',
       loadChildren: () => import('./sic-syncro/sic-syncro.module')
         .then(m => m.SicSyncroModule),

@@ -65,6 +65,8 @@ import { LastalarmComponent } from './lastalarm/lastalarm.component';
 import { QueuedOrdersComponent } from './queued-orders/queued-orders.component';
 import { ManualorderComponent } from './manualorder/manualorder.component';
 import { OrmanualComponent } from './ormanual/ormanual.component';
+import { PacketCounterComponent } from './rooms/packet-counter/packet-counter.component';
+import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
   imports: [
@@ -98,6 +100,7 @@ import { OrmanualComponent } from './ormanual/ormanual.component';
     DialogModule,
     NbCheckboxModule,
     ComboBoxModule,
+    DatePickerModule,
   ],
   declarations: [
     DashboardComponent,
@@ -125,6 +128,7 @@ import { OrmanualComponent } from './ormanual/ormanual.component';
     QueuedOrdersComponent,
     ManualorderComponent,
     OrmanualComponent,
+    PacketCounterComponent,
   ],
   providers: [
     PageService, 

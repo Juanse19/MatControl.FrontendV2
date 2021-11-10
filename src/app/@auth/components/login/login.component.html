@@ -24,7 +24,7 @@
 <div [formGroup]="loginForm" aria-labelledby="title">
     <div class="form-control-group">
         <label for="input-email">correo electrónico:</label>
-        <input nbInput fullWidth id="input-email" formControlName="email" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="email.invalid && email.touched ? true : null" placeholder="Email address">
+        <input nbInput fullWidth id="input-email" formControlName="email" [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : 'basic'" [attr.aria-invalid]="email.invalid && email.touched ? true : null" placeholder="Email address" [(ngModel)]="correo">
         <ngx-validation-message label="Email address" [showPattern]="email?.hasError('pattern') && email.touched" [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
     </div>
 
@@ -33,7 +33,7 @@
       <label class="label" for="input-password">Contraseña:</label>
       
     </span>
-        <input nbInput fullWidth id="input-password" formControlName="password" type="password" [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'" placeholder="Password">
+        <input nbInput fullWidth id="input-password" formControlName="password" type="password" [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : 'basic'" placeholder="Password" [(ngModel)]="contrasena">
         <ngx-validation-message label="Password" [showMinLength]="password?.hasError('minlength') && password.touched" [showMaxLength]="password?.hasError('maxlength') && password.touched" [showRequired]="password?.errors?.required && password.touched" [minLength]="minLength"
             [maxLength]="maxLength"></ngx-validation-message>
     </div>

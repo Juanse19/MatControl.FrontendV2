@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header>
+        Enrutamiento de contenedores
+    </nb-card-header>
+
+    <nb-card-body>
+        <ejs-grid #grid [dataSource]='' [allowPaging]="true" [pageSettings]='pageSettings' 
+        [filterSettings]='filterOptions' allowSorting='true' [editSettings]='editSettings' [toolbar]='toolbarOptions'
+         [toolbar]='toolbar' (created)='created($event)' allowTextWrap='true' [allowFiltering]="true" >
+            <e-columns> 
+                <e-column field='Id' headerText='Id' width=70></e-column>
+                <e-column field='ContainerNumber' headerText='Container' width=90></e-column>
+                <e-column field='DestinationNumber' headerText='Destino' width=100></e-column>
+                <e-column field='State' headerText='Estado' width=100></e-column>
+                <e-column field='ReadingDateTime' headerText='Lectura' width=110 type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
+                <e-column field='ConfirmationDateTime' headerText='Confirmación' width=110></e-column>
+                <e-column field='ZoneCompleteDateTime' headerText='Zone Complete' width=110 type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
+                <e-column field='Weight' headerText='Peso' width=110></e-column>
+            </e-columns>
+        </ejs-grid>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card class="inline-form-card">
+            <nb-card-header>
+                <h6 id="h6">Eficiencia Lectores Códigos de Barras </h6>
+            </nb-card-header>
+            <nb-card-body id="form">
+                <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
+
+                    <div class="form-group mx-sm-4 mb-3">
+                        <ejs-datepicker formControlName="StartTime" name=" StartTime " id="StartTime " data-name="StartTime " placeholder='Fecha Inicio' floatLabelType='Always' required>
+                        </ejs-datepicker>
+                    </div>
+
+
+                    <button nbButton status="primary " class="btn btn-primary" (click)="date(airForm.controls.StartTime.value)">Cosultar</button>
+                    
+                </form>
+
+                <p>{{ airForm.controls.StartTime.value | date:"dd-MM-yyyy" }}</p>
+
+                <ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [title]='title'>
+                    <e-series-collection>
+                        <e-series [dataSource]='chartData' type='Line' xName='xValue' yName='yValue' name='Consumo' width=2 [marker]='marker'></e-series>
+                    </e-series-collection>
+                </ejs-chart>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+

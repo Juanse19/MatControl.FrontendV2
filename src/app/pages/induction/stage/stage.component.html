@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header>
+        Inducción
+    </nb-card-header>
+
+    <nb-card-body>
+        <ejs-grid #grid [dataSource]='dataStage' [allowPaging]="true" [pageSettings]='pageSettings' 
+        [filterSettings]='filterOptions' allowSorting='true' [editSettings]='editSettings' [toolbar]='toolbarOptions'
+         [toolbar]='toolbar' (created)='created($event)' (actionBegin)="actionBegin($event)" allowTextWrap='true' [allowFiltering]="true" >
+            <e-columns> 
+                <e-column field='Id' headerText='Id' width=70></e-column>
+                <e-column field='FileName' headerText='Nombre de archivo' width=140></e-column>
+                <e-column field='Patch' headerText='Ruta' width=100></e-column>
+                <e-column field='Date' headerText='Fecha' width=100 type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
+                <e-column field='Type' headerText='Tipo' width=110></e-column>
+                <e-column field='State' headerText='Estado' width=110></e-column>
+                <e-column field='Description' headerText='Descripción' width=110></e-column>
+                <!-- <e-column headerText='Editar' width='88' [commands]='commands'></e-column> -->
+            </e-columns>
+        </ejs-grid>
+    </nb-card-body>
+</nb-card>

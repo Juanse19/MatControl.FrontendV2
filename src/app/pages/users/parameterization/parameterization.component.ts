@@ -206,7 +206,7 @@ debugger
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any) => {
       // console.log("Envió: ", res);
-      this.ChargeDataConfi();
+      this.ChargeDataPara();
       });
 
     // console.log('Update configuration');
@@ -280,25 +280,25 @@ debugger
       //REPORTOCUPATION=res;
       // console.log("Configuration:", res);
       this.dataPara = res;
-      console.log("Configuration:", this.dataPara);
+      // console.log("Configuration:", this.dataPara);
     });
   }
 
-  ChargeDataConfi() {
-    this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/configuration').subscribe((res: any) => {
-      //REPORTOCUPATION=res;
-      // console.log("Configuration:", res);
-      this.dataConfigu = res;
-    });
-    // const contador = interval(60000)
-    // contador.subscribe((n) => {
-    //   this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/orderposition').subscribe((res: any) => {
-    //     //REPORTOCUPATION=res;
-    //     this.dataOrposition = res;
-    //   });
-    // });
+  // ChargeDataConfi() {
+  //   this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/configuration').subscribe((res: any) => {
+  //     //REPORTOCUPATION=res;
+  //     // console.log("Configuration:", res);
+  //     this.dataConfigu = res;
+  //   });
+  //   // const contador = interval(60000)
+  //   // contador.subscribe((n) => {
+  //   //   this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/orderposition').subscribe((res: any) => {
+  //   //     //REPORTOCUPATION=res;
+  //   //     this.dataOrposition = res;
+  //   //   });
+  //   // });
 
-  }
+  // }
 
   ngOnDestroy() {
     this.alive = false;

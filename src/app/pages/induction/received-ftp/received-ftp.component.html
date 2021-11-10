@@ -1,0 +1,23 @@
+<nb-card>
+    <nb-card-header>
+        Archivos Recibidos FTP
+    </nb-card-header>
+
+    <nb-card-body>
+        <ejs-grid #grid [dataSource]='dataFTP' [allowPaging]="true" [pageSettings]='pageSettings' 
+        [filterSettings]='filterOptions' allowSorting='true' [editSettings]='editSettings' [toolbar]='toolbarOptions'
+         [toolbar]='toolbar' (created)='created($event)' allowTextWrap='true' [allowFiltering]="true" >
+            <e-columns> 
+                <e-column field='Id' headerText='Id' width=70></e-column>
+                <e-column field='IdInterface' headerText='Interface' width=90></e-column>
+                <e-column field='DateLoad' headerText='Fecha' type="date" format="dd/MM/yyyy hh:mm:ss a" width=100></e-column>
+                <e-column field='WaveNumber' headerText='Batch' width=100></e-column>
+                <e-column field='OrderNumber' headerText='Orden' width=110></e-column>
+                <e-column field='ContairnerNumber' headerText='Contenedor' width=110></e-column>
+                <e-column field='DestinationNumber' headerText='Destino' width=110></e-column>
+                <e-column field='FileName' headerText='Archivo' width=110></e-column>
+                <e-column field='Description' headerText='Estado' width=110></e-column>
+            </e-columns>
+        </ejs-grid>
+    </nb-card-body>
+</nb-card>

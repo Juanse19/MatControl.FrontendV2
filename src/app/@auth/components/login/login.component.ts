@@ -39,8 +39,8 @@ interface dataLicens {
 
 export class NgxLoginComponent implements OnInit {
 
-  // correo = 'admin@admin.admin';
-  // contrasena = 'admin';
+  correo = 'mladmin@matec.com.co';
+  contrasena = 'admin';
 
   intervalSubscriptionSesion: Subscription;
 

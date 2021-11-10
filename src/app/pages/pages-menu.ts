@@ -20,8 +20,25 @@ export class PagesMenu {
       {
         title: 'Dashboard',
         icon: 'monitor-outline',
-        link: '/pages/iot-dashboard',
-        children: undefined,
+        // link: '/pages/iot-dashboard',
+        children: [
+            {
+              title: 'Contadores de Paquetes', 
+              link: '/pages/iot-dashboard',
+            },
+            {
+              title: 'Eficiencia Lectores', 
+              link: '/pages/induction/Readerefficiency',
+            },
+            {
+              title: 'Consumo Energetico', 
+              link: '/pages/induction/Energyconsumption',
+            },
+            {
+              title: 'Carga Trabajo', 
+              link: '/pages/induction/Workload',
+            },
+        ],
       },
     ];
 
@@ -312,22 +329,33 @@ export class PagesMenu {
       // link: '/pages/analytics/analytics',
       children: [
         {
-          title: 'Ocupación',
-          link: '/pages/analytics/ocupacion',
+          title: 'Interface en Stage',
+          link: '/pages/induction/Stage',
         },
         {
-          title: 'Ordenes',
-          link: '/pages/analytics/ordenes',
+          title: 'Archivos Recibidos FTP',
+          link: '/pages/induction/ReceivedFTP',
         },
         {
-          title: 'Ordenes no transportables',
-          link: '/pages/analytics/ordenesNotWips',
+          title: 'Mensajes Recibidos Socket',
+          link: '/pages/induction/ReceivedSocket',
         },
-        {
-          title: 'Predictivo',
-          link: '/pages/analytics/predictivo',
-        },
+        // {
+        //   title: 'Predictivo',
+        //   link: '/pages/analytics/predictivo',
+        // },
         
+      ],
+    };
+
+    const automatizacionMenu: NbMenuItem = {
+      title: 'Modúlo Automatización',
+      icon: 'archive-outline',
+      children: [
+        {
+          title: 'Enrutamiento',
+          link: '/pages/induction/ContainerRouting',
+        },
       ],
     };
 
@@ -433,7 +461,7 @@ export class PagesMenu {
           // return [...dashboardMenu, orderMenu, userMenu, ...menu,registerMenu];
           // return [...dashboardMenu, orderMenu, reportMenu, analyticsMenu, userMenu, alarmMenu, registerMenu];
           // return [...dashboardMenu, procesosMenu, induccionMenu, repoMenu, analyticsMenu, configurationMenu, alarmMenu];
-          return [...dashboardMenu, procesosMenu, InductionMenu, configurationMenu, alarmMenu];
+          return [...dashboardMenu, InductionMenu, automatizacionMenu, configurationMenu, alarmMenu];
         } else {
           //return [...dashboardMenu, ...menu];
           return [...dashboardMenu, alarmMenu];
