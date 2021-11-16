@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common'; 
 import { takeWhile } from 'rxjs/operators';
 import { NbToastrService } from '@nebular/theme';
-import { MarkerSettingsModel } from '@syncfusion/ej2-angular-charts';
+import { MarkerSettingsModel, TooltipSettingsModel } from '@syncfusion/ej2-angular-charts';
 
 interface consumption {
   Date: string,
@@ -33,16 +33,34 @@ export class EnergyconsumptionComponent implements OnInit {
   public dataConsumption: consumption[]=[];
   public dataChar: chart[]=[];
 
-  public primaryXAxis: Object;
+public primaryXAxis: Object;
 public chartData: Object[];
 public primaryYAxis: Object;
 public legendSettings: Object;
+public tooltip: Object;
+// public tooltip: TooltipSettingsModel =  {
+//   enable: true,
+//   // tslint:disable-next-line:max-line-length
+//   template:
+//   '<div id="Tooltip"><table style="width:100%;  border: 1px solid black;" class="table-borderless">' +
+//   '<tr><th rowspan="2" style="background-color: #C1272D"><img src="assets/chart/images/grain.png" />' +
+//    // tslint:disable-next-line:max-line-length
+//    '</th><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">' +
+//    // tslint:disable-next-line:max-line-length
+//    '${y}</td></tr><tr ><td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${x}</td>' +
+//    '</tr></table></div>'
+// };
 public marker: MarkerSettingsModel = {
   visible: true,
   width: 10,
   height: 10,
-  fill: '#C1272D',
-  border: {color: '#333333', width: 2}
+  dataLabel:{
+    visible: true
+},
+  // fill: '#C1272D',
+  fill: 'rgb(0, 189, 174)',
+  // rgb(0, 189, 174)
+  border: {color: '#333333', width: 1}
 };
 public title: string;
 
@@ -58,18 +76,26 @@ public title: string;
   ngOnInit(): void {
     
     this.initForm();
-    this.ChargeDataFTP();
     
+    this.chartData = this.dataConsumption;
+    
+    this.tooltip = { enable: true };
+
   this.primaryYAxis = {
       title: 'KWh',
       interval: 2,
+      labelFormat: '{value}'
     },
+
+    this.legendSettings = {
+      visible: true
+  };
 
     this.primaryXAxis = {
       title: 'Horas',
       interval: 1,
       min: 0,
-      max: 23
+      max: 23,
     },
 
   this.title = 'Consumo Energético por Día';
@@ -95,7 +121,7 @@ public title: string;
     if (fechaFormateada == null) {
       this.toastrService.warning('', 'No pusiste la fecha.');
     } else {
-      this.http.get(this.api.apiUrlNode + '/api/GetEnergyConsumtion?date='+ fechaFormateada)
+      this.http.get(this.api.apiUrlNode + '/api/GetEnergyConsumtionTest?date='+ fechaFormateada)
     .pipe(takeWhile(() => this.alive))
     .subscribe((res: any)=>{
       if (res.length == 0){
@@ -105,6 +131,8 @@ public title: string;
         // console.log("no lo esta")
         }
       this.dataConsumption=res;
+      this.chartData = this.dataConsumption;
+      console.log('DataChart:', this.chartData );
       console.log('Consumption:', this.dataConsumption );
       
     });
@@ -115,9 +143,9 @@ public title: string;
   ChargeDataFTP() {
     this.apiGetComp.GetJson(this.api.apiUrlNode + '/test').subscribe((res: any) => {
       this.dataChar = res;
-      this.chartData = this.dataChar;
-      console.log('Chart:', this.dataChar );
-      console.log('DataChart:', this.chartData );
+      // this.chartData = this.dataChar;
+      // console.log('Chart:', this.dataChar );
+      // console.log('DataChart:', this.chartData );
     });
   }
 

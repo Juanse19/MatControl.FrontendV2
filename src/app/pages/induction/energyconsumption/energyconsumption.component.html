@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-header>
-                <h6 id="h6">Eficiencia Lectores Códigos de Barras </h6>
+                <h6 id="h6">Consumo de energía </h6>
             </nb-card-header>
             <nb-card-body id="form">
                 <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
@@ -17,16 +17,17 @@
                     
                 </form>
 
-                <p>{{ airForm.controls.StartTime.value | date:"dd-MM-yyyy" }}</p>
+                <!-- <p>{{ airForm.controls.StartTime.value | date:"dd-MM-yyyy" }}</p> -->
 
-                <ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [title]='title'>
-                    <e-series-collection>
-                        <e-series [dataSource]='chartData' type='Line' xName='xValue' yName='yValue' name='Consumo' width=2 [marker]='marker'></e-series>
-                    </e-series-collection>
-                </ejs-chart>
+                
 
             </nb-card-body>
         </nb-card>
     </div>
 </div>
 
+<ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [legendSettings]='legendSettings' [tooltip]='tooltip' [title]='title'>
+    <e-series-collection>
+        <e-series [dataSource]='chartData' type='Line' xName='xValue' yName='yValue' name='Consumo' width=2  [marker]='marker'></e-series>
+    </e-series-collection>
+</ejs-chart>
