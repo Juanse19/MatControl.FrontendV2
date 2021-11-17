@@ -11,7 +11,7 @@
                     </ng2-smart-table>
                 </nb-card-body> -->
 
-                <ejs-grid [dataSource]='Alarm' [editSettings]='editSettings' (toolbarClick)='clickHandler($event)' [toolbar]='toolbar'  (actionBegin)="actionBegin($event)"  [allowPaging]="true"
+                <!-- <ejs-grid [dataSource]='Alarm' [editSettings]='editSettings' (toolbarClick)='clickHandler($event)' [toolbar]='toolbar'  (actionBegin)="actionBegin($event)"  [allowPaging]="true"
                 [pageSettings]="pageSettings" allowSorting='true' [filterSettings]="filterOptions" allowTextWrap="true"
                 [allowFiltering]="true" height='350'>
                     <e-columns>
@@ -21,6 +21,19 @@
                         <e-column field='userId' headerText='Usuario' width=100></e-column>
                         <e-column field='STD' headerText='Fecha' width=90 type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
                         <e-column headerText='Administrar Alarmas' width='100' [commands]='commands'></e-column>
+                    </e-columns>
+                </ejs-grid> -->
+
+                <ejs-grid [dataSource]='dataLogEvent' [editSettings]='editSettings'  [toolbar]='toolbar'  [allowPaging]="true"
+                [pageSettings]="pageSettings" allowSorting='true' [filterSettings]="filterOptions" allowTextWrap="true"
+                [allowFiltering]="true" height='350'>
+                    <e-columns>
+                        
+                        <e-column field='Date' headerText='Fecha' width=180 isPrimaryKey='true' type="date" format="dd/MM/yyyy hh:mm:ss a"></e-column>
+                        <e-column field='Level' headerText='Nivel' width=85></e-column>
+                        <e-column field='Message' headerText='Mensaje' width=100></e-column>
+                        <e-column field='Logger' headerText='Log' width=90 ></e-column>
+                        <!-- <e-column headerText='Administrar Alarmas' width='100' [commands]='commands'></e-column> -->
                     </e-columns>
                 </ejs-grid>
 

@@ -5,13 +5,27 @@
                 <h6 id="h6">Carga de trabajo por Wave's  </h6>
             </nb-card-header>
             <nb-card-body >
-                <form  class="form-inline" novalidate id="formId">
+                <form [formGroup]="airForm" class="form-inline" novalidate id="formId">
                     <div class="form-group mx-sm-4 mb-3">
-                        <ejs-datepicker  name=" StartTime " id="StartTime " data-name="StartTime " placeholder='Fecha Inicio' floatLabelType='Always' required>
-                        </ejs-datepicker>
+                        <!-- <ejs-datepicker  name=" StartTime " id="StartTime " data-name="StartTime" placeholder='Fecha Inicio' floatLabelType='Always' required>
+                        </ejs-datepicker> -->
+
+                        
+                            <!-- <ejs-dropdownlist formControlName="StartTime" name="StartTime" value='value' [fields]='checkFields' [dataSource]='dataAllWave' placeholder="Ordenes" [allowFiltering]='true' floatLabelType='Auto' required>
+                            </ejs-dropdownlist> -->
+                        
+                        <ejs-multiselect id='multiselect-checkbox' #checkbox [dataSource]='dataAllWave' formControlName="StartTime" name="StartTime" value='value' id="StartTime " [placeholder]='checkWaterMark' [fields]='checkFields'
+                [mode]='mode' [popupHeight]='popHeight' [showDropDownIcon]='true' showSelectAll='true' [filterBarPlaceholder]='filterPlaceholder'></ejs-multiselect>
+
+                    <button nbButton status="primary " class="btn btn-primary" (click)="date(airForm.controls.StartTime.value)">Cosultar</button>
+                        
                     </div>
+
+                    
+
                 </form>
-                <div class="row col-md-12">
+                
+                <div class="row col-md-12"> 
                     <br />
                     <span class="badge badge-pill badge-danger">Tienda</span>
                     <br />

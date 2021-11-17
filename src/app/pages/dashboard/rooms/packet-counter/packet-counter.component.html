@@ -75,7 +75,7 @@
                 <image id="Layer_0_Imagen-2" data-name="Layer 0 Imagen" width="1458" height="885"
                 transform="translate(80.41 24.47) scale(0.24)" xlink:href="./assets/img/CEDI_Leonisa.png" />
                 <g>
-                <text x="70.78" y="164.75" class="st5" >100</text>
+                <!-- <text x="70.78" y="164.75" class="st5" >100</text>
                 <text x="75.78" y="174.75" class="st5">101</text>
                 <text x="80.78" y="184.75" class="st5">102</text>
                 <text x="90.78" y="194.75" class="st5">103</text>
@@ -85,13 +85,35 @@
                 <text x="100.78" y="204.75" class="st5">107</text>
                 <text x="100.78" y="204.75" class="st5">108</text>
                 <text x="100.78" y="204.75" class="st5">109</text>
-                <text x="100.78" y="204.75" class="st5">110</text>
-                <text x="208.78" y="65.75" class="st5">207</text>
-                <text x="210.78" y="73.75" class="st5">208</text>
-                <text x="215.78" y="84.75" class="st5">209</text>
-                <text x="220.78" y="88.75" class="st5">210</text>
+                <text x="100.78" y="204.75" class="st5">110</text> -->
+                <text x="208.78" y="65.75" (click)="ClicTX()" class="st5">207</text>
+                <text x="210.78" y="73.75" (click)="ClicTX()" class="st5">208</text>
+                <text x="246.78" y="98.75" (click)="ClicTX()" class="st5">209</text>
+                <text x="250.78" y="106.75" (click)="ClicTX()" class="st5">210</text>
             </g>
         </svg>
+        
         </div>
+
+        <div #container class='root-container'>
+            <ejs-dialog id='ejDialogTX' #ejDialogTX allowDragging='true' header='' [visible]='hidden' [target]='targetElement' width='300px' [showCloseIcon]='showCloseIcon'>
+                <ng-template #content>
+ 
+                    
+
+                      
+                        <span class="badge badge-pill badge-danger">10</span>
+                        <span class="badge badge-pill badge-success">0</span>
+                        <br />
+                        <span class="badge badge-pill badge-warning">207</span>
+                        <span class="badge badge-pill badge-primary">0</span>
+                        <br />
+                        <span class="badge badge-pill badge-warning">208</span>
+                        <span class="badge badge-pill badge-primary">0</span>
+                </ng-template>
+            </ejs-dialog>
+        </div>
+
+
     </nb-card-body>
 </nb-card>

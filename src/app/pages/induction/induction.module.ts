@@ -36,7 +36,8 @@ import { ContainerRoutingComponent } from './container-routing/container-routing
 import { ChartModule} from '@syncfusion/ej2-angular-charts';
 import { CategoryService, LegendService, TooltipService } from '@syncfusion/ej2-angular-charts';
 import { DataLabelService, LineSeriesService} from '@syncfusion/ej2-angular-charts';
-
+import { CheckBoxModule, ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { MultiSelectAllModule } from '@syncfusion/ej2-angular-dropdowns';
 
 
 @NgModule({
@@ -65,6 +66,9 @@ import { DataLabelService, LineSeriesService} from '@syncfusion/ej2-angular-char
   DatePickerModule,
   DropDownListModule,
   ChartModule,
+  CheckBoxModule, 
+  ButtonModule,
+  MultiSelectAllModule,
   ],
   providers: [
     PageService, 

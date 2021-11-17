@@ -28,6 +28,22 @@ interface Alarmas {
   DescriptionDevice: string;
 }
 
+interface LogEvent{
+  ID: number,
+  Date: string,
+  Thread: string,
+  Context: string,
+  Level: string,
+  Logger: string,
+  Method: string,
+  Parameters: string,
+  Message: string,
+  Exception: string,
+  ExecutionTime: string,
+  UserName: string,
+  Module: string,
+}
+
 let ALARMAS: Alarmas[] = [
 
 
@@ -52,7 +68,8 @@ export class AlarmsComponent implements OnDestroy {
   intervalSubscriptionHistoryalarms: Subscription;
 
   public pageSettings: PageSettingsModel;
-  
+
+  public Alarm: Alarmas[];
 
   public editSettings: Object;
     // public toolbar: string[];
@@ -64,135 +81,11 @@ export class AlarmsComponent implements OnDestroy {
   public filterOptions: FilterSettingsModel;
   public initialSort: Object;
 
+  public dataLogEvent: LogEvent[];
+
   alarmas = ALARMAS;
 
-  settings = {
-    // actions: false,
-    actions: {
-      add: false,
-      edit: false,
-      
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-checkmark-circle"></i>',
-      confirmDelete: true,
-    },
-    
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        filter: false,
-        hide: true,
-
-      },
-      message: {
-        title: 'Descripción',
-        type: 'string',
-        filter: true,
-      },
-      level: {
-        title: 'Nivel',
-        type: 'string',
-        filter: false,
-      },
-      // exception: {
-      //   title: 'excepción',
-      //   type: 'string',
-      //   filter: false,
-      // },
-      userId: {
-        title: 'Usuario',
-        type: 'string',
-        filter: false,
-      },
-      STD: {
-        title: 'Fecha',
-        type: 'string',
-        filter: false,
-      },
-      // ETD: {
-      //   title: 'Fecha fin',
-      //   type: 'string',
-      //   filter: false,
-      // },
-      // UserIdAcknow: {
-      //   title: 'Usuario ',
-      //   type: 'string',
-      //   filter: false,
-      // },
-      DescriptionDevice: {
-        title: 'Dispositivo',
-        type: 'string',
-        filter: false,
-      },
-    },
-  };
-
-  source: LocalDataSource = new LocalDataSource();
-  public Alarm: Alarmas[];
-
-  // History AlARMS
-  setting = {
-    // actions: false,
-    actions: {
-      add: false,
-      edit: false,
-      delete: false,
-    },
-    
-    columns: {
-      id: {
-        title: 'ID',
-        type: 'number',
-        filter: false,
-        hide: true,
-
-      },
-      message: {
-        title: 'Descripción',
-        type: 'string',
-        filter: true,
-      },
-      level: {
-        title: 'Nivel',
-        type: 'string',
-        filter: false,
-      },
-      // exception: {
-      //   title: 'excepción',
-      //   type: 'string',
-      //   filter: false,
-      // },
-      userId: {
-        title: 'Usuario',
-        type: 'string',
-        filter: false,
-      },
-      STD: {
-        title: 'Fecha',
-        type: 'string',
-        filter: false,
-      },
-      ETD: {
-        title: 'Fecha fin',
-        type: 'string',
-        filter: false,
-      },
-      UserIdAcknow: {
-        title: 'Usuario reconoce',
-        type: 'string',
-        filter: false,
-      },
-      DescriptionDevice: {
-        title: 'Dispositivo',
-        type: 'string',
-        filter: false,
-      },
-    },
-  };
-
-  source1: LocalDataSource = new LocalDataSource();
+  
   public Alarms: Alarmas[];
 
   constructor(
@@ -231,8 +124,9 @@ export class AlarmsComponent implements OnDestroy {
       type: 'Menu',
    };
 
-    this.Chargealarms();
-    this.ChargeHistoryalarms();
+    // this.Chargealarms();
+    // this.ChargeHistoryalarms();
+    this.ChargeaLogEvent();
 
     this.toolbar = [
       //  {text: 'Delete', prefixIcon: 'fas fa-check'},
@@ -287,7 +181,6 @@ export class AlarmsComponent implements OnDestroy {
           this.toastrService.success('', '¡Alarma solucionada!'); 
           this.Chargealarms();
           this.AlarmsCharge();
-          this.source.refresh();
         } else {
           this.toastrService.danger('', 'Algo salio mal.');
         }
@@ -343,7 +236,6 @@ export class AlarmsComponent implements OnDestroy {
          if (res) {
           this.toastrService.success('', '¡Alarma solucionada!'); 
          
-          this.source.refresh();
         } else {
           this.toastrService.danger('', 'Algo salio mal.');
         }
@@ -388,7 +280,6 @@ export class AlarmsComponent implements OnDestroy {
       this.apiGetComp.PostJson(this.api.apiUrlNode + '/api/acknowall', respons)
       .pipe(takeWhile(() => this.alive))
       .subscribe((res: any) => {
-       this.source.refresh();
        this.Chargealarms();
        this.AlarmsCharge();
       });
@@ -396,10 +287,8 @@ export class AlarmsComponent implements OnDestroy {
          Swal.fire('¡Se Reconocieron Exitosamente', 'success');
          this.Chargealarms();
          this.AlarmsCharge();
-         this.source.refresh();
      }
-   });
-         this.source.refresh();   
+   });  
          this.select = false;
          this.mostrar = false;
        }else {
@@ -470,7 +359,6 @@ export class AlarmsComponent implements OnDestroy {
       // console.log("HAlarms: ", res);
       
       this.Alarms = res;
-      this.source1.load(res);
     });
     // const contador = interval(6000)
     // contador.subscribe((n) => {
@@ -481,6 +369,17 @@ export class AlarmsComponent implements OnDestroy {
     //     this.source1.load(res);
     //   });
     // });
+  }
+
+  ChargeaLogEvent() {
+    this.apiGetComp.GetJson(this.api.apiUrlNode + '/api/LogEvent')
+    .pipe(takeWhile(() => this.alive))
+    .subscribe((res: any) => {
+      //REPORTOCUPATION=res;
+      // console.log("Report Total Ordenes:", res);
+      this.dataLogEvent = res;
+      // console.log("dataLogEvent", this.dataLogEvent);
+    });
   }
 
   ngOnDestroy(): void {
